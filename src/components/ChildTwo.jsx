@@ -1,10 +1,24 @@
-import React from 'react'
+import React, {forwardRef, useImperativeHandle, useRef} from 'react'
 
-export default function ChildTwo() {
+const ChildTwo = forwardRef((props, ref) => {
   console.log('child two')
+
+  useImperativeHandle(ref, () => ({
+    showAlert() {
+      alert("getAlert from Child");
+    },
+
+    log() {
+      console.log('show some text')
+    }
+  }));
+
   return (
-    <div>ChildTwo</div>
+    <div>Child Two</div>
   )
-}
+})
+
+export default ChildTwo;
+
 
 
